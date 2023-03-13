@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="TR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>resim galerisi</title>
+</head>
+
+<body>
+    <div class="gallery">
+        <ul class="controls">
+            <li class="buttons active" data-filter="all">all</li>
+            <li class="buttons" data-filter="yemek">yemek</li>
+            <li class="buttons" data-filter="tatlı">tatlı</li>
+            <li class="buttons" data-filter="icecek">icecek</li>
+
+        </ul>
+
+        <div class="image-container">
+            <a href="img/burger.avif" class="image yemek">
+                <img src="img/burger.avif" alt="">
+            </a>
+            <a href="img/durum.avif" class="image yemek">
+                <img src="img/durum.avif" alt="">
+            </a>
+            <a href="img/köfte.avif" class="image yemek">
+                <img src="img/köfte.avif" alt="">
+            </a>
+            <a href="img/makarna.avif" class="image yemek">
+                <img src="img/makarna.avif" alt="">
+            </a>
+
+            <a href="img/donat.avif" class="image tatlı ">
+                <img src="img/donat.avif" alt="">
+            </a>
+            <a href="img/pasta.avif" class="image tatlı ">
+                <img src="img/pasta.avif" alt="">
+            </a>
+            <a href="img/kak.avif" class="image tatlı ">
+                <img src="img/kak.avif" alt="">
+            </a>
+
+            <a href="img/karpuzlu.avif" class="image icecek">
+                <img src="img/karpuzlu.avif" alt="">
+            </a>
+            <a href="img/portakal.avif" class="image icecek">
+                <img src="img/portakal.avif" alt="">
+            </a>
+            <a href="img/milkshake.avif" class="image icecek">
+                <img src="img/milkshake.avif" alt="">
+            </a>
+
+        </div>
+
+    </div>
+    <!--jquery cdn link-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <!--magnific popup js cdn link-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('.buttons').click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+                var filter = $(this).attr('data-filter')
+
+                if (filter == 'all') {
+                    $('.image').show(400);
+                } else {
+                    $('.image').not('.' +filter).hide(200);
+                    $('.image').filter('.' +filter).show(400);
+                }
+            });
+        });
+        $('.gallery').magnificPopup({
+
+            delegate:'a',
+            type:'image',
+            gallery:{
+                enable:true
+            }
+        })
+    </script>
+</body>
+
+</html>
